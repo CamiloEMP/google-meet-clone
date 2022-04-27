@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@twilio-labs/serverless-runtime-types": "^2.2.2",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.4.5",
