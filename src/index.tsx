@@ -1,8 +1,13 @@
-import 'flowbite';
-import React from "react";
-import { createRoot } from 'react-dom/client';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import 'flowbite'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 
-const container = document.getElementById('app');
-const root = createRoot(container!);
+const container = document.getElementById('app')
+const root = createRoot(container!)
 
-root.render(<React.StrictMode><div>Hello world</div></React.StrictMode>);
+root.render(
+  <React.StrictMode>
+    <div>Hello world</div>
+  </React.StrictMode>
+)
