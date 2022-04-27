@@ -6,6 +6,7 @@
     "build": "run-s build:react build:postcss",
     "build:react": "webpack --config webpack.prod.js --progress",
     "build:postcss": "postcss ./style/index.css -o ./assets/styles.css",
+    "postbuild": "node ./scripts/postbuild.js",
     "lint": "eslint . --fix",
     "dev": "run-p dev:*",
     "dev:react": "webpack serve --config webpack.dev.js --progress",
