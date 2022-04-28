@@ -42,7 +42,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
                 Inicia Sesion
               </button>
             </span>
-            <button>Iniciar Sesion</button>
+            <button>Registrate</button>
           </div>
         </div>
       </div>
