@@ -2,6 +2,7 @@
 const baseConfig = require('./webpack.config')
 const { merge } = require('webpack-merge')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = merge(baseConfig, {
   output: {
@@ -10,6 +11,10 @@ module.exports = merge(baseConfig, {
     publicPath: '/'
   },
   mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()]
+  },
   plugins: [
     ...(process.env.NODE_ENV === 'development'
       ? [new BundleAnalyzerPlugin()]

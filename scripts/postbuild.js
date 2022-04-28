@@ -8,7 +8,7 @@ const assetDir = path.join(buildDir, 'assets')
 
 if (!fs.existsSync(assetDir)) {
   fs.mkdirSync(assetDir)
-  fs.cpSync(
+  fs.copyFileSync(
     path.join(buildDir, 'index.html'),
     path.join(assetDir, 'index.html')
   )
