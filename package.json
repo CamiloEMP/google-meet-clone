@@ -17,6 +17,7 @@
   "dependencies": {
     "@twilio/runtime-handler": "1.2.2",
     "cross-env": "^7.0.3",
+    "react-router-dom": "^6.3.0",
     "twilio": "^3.56"
   },
   "devDependencies": {
