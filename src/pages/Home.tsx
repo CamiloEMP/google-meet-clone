@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import MeetIcon from '../assets/MeetIcon'
 import { LoginCard } from '../components/auth/login'
 import { LogupCard } from '../components/auth/logup'
