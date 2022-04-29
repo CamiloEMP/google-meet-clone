@@ -1,50 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LoginUser } from '../../supabase/auth/loginUser'
+
+import { ButtonModal } from '../Buttons/ButtonModal'
+import { Footer } from './footer'
+import { Inputs } from './Inputs'
 import { AuthCommonProps } from './types'
 
 export function LoginCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
+  const navigate = useNavigate()
+  const [isLogged, setIsLogged] = useState(false)
+  const [values, setValues] = useState({
+    email: '',
+    password: ''
+  })
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const { user, session } = await LoginUser(values)
+    if (user !== null && session !== null) {
+      setIsLogged(true)
+    }
+  }
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/dashboard')
+    }
+  }, [isLogged])
+
   return (
-    <div className="relative p-4 w-full max-w-2xl h-full md:h-auto">
+    <div className="relative p-4 w-full max-w-2xl h-auto">
       <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
         <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Iniciar Sesion
           </h3>
-          <button
-            type="button"
-            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-            data-modal-toggle="defaultModal"
-            onClick={onClose}
-          >
-            <svg
-              className="w-5 h-5"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </button>
+          <ButtonModal onClose={onClose} />
         </div>
-        <div className="p-6 space-y-6">
-          <input type="text" placeholder="email" />
-          <input type="password" placeholder="password" />
-          <div>
-            <span>
-              Si no tienes una cuenta.{' '}
-              <button
-                className="text-blue-500"
-                onClick={() => onChange('logup')}
-              >
-                Registrate
-              </button>
-            </span>
-            <button>Iniciar Sesion</button>
-          </div>
-        </div>
+        <form className="p-6 flex flex-col" onSubmit={handleSubmit}>
+          <Inputs values={values} setValues={setValues} />
+          <Footer onClick={() => onChange('logup')} isLogin={true} />
+        </form>
       </div>
     </div>
   )
