@@ -3,14 +3,16 @@ import { LoginCard } from '../components/auth/login'
 import { LogupCard } from '../components/auth/logup'
 import { AuthActions } from '../components/auth/types'
 import { Button } from '../components/Buttons/ButtonPrimary'
+import { NavBar } from '../components/Navbar'
 
 export const Home = () => {
   const [over, setOver] = useState(false)
   const [action, setAction] = useState<AuthActions>('login')
 
   return (
-    <>
-      <main className="flex flex-col w-full h-4/5">
+    <div className="flex flex-col w-full h-full">
+      <NavBar />
+      <main className="flex flex-col w-full h-full">
         <section className="flex-1 container mx-auto flex h-full w-full items-center flex-col-reverse md:flex-row gap-4 md:gap-0">
           <div className="w-full md:w-2/4 px-4 md:px-0 flex-1 md:flex-auto">
             <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-center md:text-left">
@@ -66,6 +68,6 @@ export const Home = () => {
           )}
         </section>
       )}
-    </>
+    </div>
   )
 }

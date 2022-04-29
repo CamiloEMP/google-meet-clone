@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import UserIcon from '../../assets/UserIcon'
+import { UserIcon } from '../../assets/icons/user.icon'
 import { CreateUser } from '../../supabase/auth/createUser'
 import { ButtonModal } from '../Buttons/ButtonModal'
 import { Footer } from './footer'
