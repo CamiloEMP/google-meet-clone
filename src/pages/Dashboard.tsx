@@ -1,27 +1,68 @@
+import { Button, Card, Dropdown } from 'flowbite-react'
 import React from 'react'
-import { CardMeet } from '../components/CardMeet'
-import { CardMeetItem } from '../components/CardMeetItem'
+import { Link } from 'react-router-dom'
+import { NavBar } from '../components/Navbar'
+
+interface MeetInfo {
+  title: string
+  org?: string
+  date: string
+  uid: string
+}
+
+interface MeetItemProps {
+  data: MeetInfo
+}
+
+function MeetItem({ data }: MeetItemProps): JSX.Element {
+  return (
+    <div className="flex justify-between items-center">
+      <div className="min-w-0 select-none">
+        <h4 className="text-base font-bold truncate text-gray-900">
+          {data.title}
+        </h4>
+        <small className="text-xs text-gray-500 truncate">{data.date}</small>
+      </div>
+      <Link to={`/${data.uid}`}>
+        <Button>Unirse</Button>
+      </Link>
+    </div>
+  )
+}
 
 export const Dashboard = () => {
+  const meets: MeetInfo[] = Array.from({ length: 14 }).map((_, i) => ({
+    uid: 'xml-sas-sd' + i,
+    title: 'mi reunion ' + (i + 1),
+    org: 'my Team',
+    date: '12/12/2020'
+  }))
+
   return (
     <>
-      <CardMeet>
-        <CardMeetItem
-          title="Reuniones"
-          titleButton="Nueva Reunión"
-          otherClass="text-xl md:text-3xl font-extrabold"
-        />
-        <CardMeetItem
-          title="Reunion con el cliente"
-          titleButton="Unirse"
-          date="24/08/2002"
-        />
-        <CardMeetItem
-          title="Reunion con la familia"
-          titleButton="Unirse"
-          date="24/08/2002"
-        />
-      </CardMeet>
+      <NavBar />
+      <div className="container mx-auto px-2 my-4">
+        <Card className="shadow-sm mx-auto w-full md:w-3/4">
+          <div className="flex justify-between items-center">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Reuniones
+            </h3>
+            <Dropdown label="Nueva Reunion">
+              <Dropdown.Item>Reunirse Ahora</Dropdown.Item>
+              <Dropdown.Item>Programar Runion</Dropdown.Item>
+            </Dropdown>
+          </div>
+          <Dropdown.Divider />
+          {meets.map((x, i) => (
+            <>
+              {i !== 0 && (
+                <div className="border-b border-gray-200 dark:border-gray-700" />
+              )}
+              <MeetItem key={`meet-info-item-${i}`} data={x} />
+            </>
+          ))}
+        </Card>
+      </div>
     </>
   )
 }

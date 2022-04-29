@@ -1,5 +1,5 @@
+import { Button } from 'flowbite-react'
 import React from 'react'
-import { Button } from '../Buttons/ButtonPrimary'
 
 interface Props {
   onClick: () => void
@@ -10,7 +10,9 @@ export const Footer = ({ onClick, isLogin }: Props): JSX.Element => {
   const text = isLogin ? 'Iniciar Sesión' : 'Registrate'
   return (
     <footer className="flex flex-col gap-2">
-      <Button text={text} type="submit" otherClass="min-w-fit w-2/4 mx-auto" />
+      <Button type="submit" className="mx-auto">
+        {text}
+      </Button>
       <span className="block text-center">
         {isLogin ? 'Si no tienes una cuenta' : 'Si tienes una cuenta'}
       </span>

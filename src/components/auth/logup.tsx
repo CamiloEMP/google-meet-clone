@@ -6,6 +6,7 @@ import { ButtonModal } from '../Buttons/ButtonModal'
 import { Footer } from './footer'
 import { Inputs } from './Inputs'
 import { AuthCommonProps, User } from './types'
+import { TextInput } from 'flowbite-react'
 
 export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
   const navigate = useNavigate()
@@ -42,10 +43,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
         </header>
         <form className="p-6 flex flex-col" onSubmit={handleSubmit}>
           <div className="relative mb-6">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <UserIcon />
-            </div>
-            <input
+            <TextInput
               value={name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setName(e.target.value)
@@ -53,8 +51,8 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
               type="text"
               id="name"
               name="name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Tú nombre"
+              icon={UserIcon}
             />
           </div>
           <Inputs values={values} setValues={setValues} />
