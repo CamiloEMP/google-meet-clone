@@ -42,7 +42,10 @@ module.exports = {
       ),
       'process.env.REACT_APP_SUPABASE_ANON_KEY': JSON.stringify(
         process.env.REACT_APP_SUPABASE_ANON_KEY
-      )
+      ),
+      'process.env.API_KEY_SID': JSON.stringify(process.env.API_KEY_SID),
+      'process.env.API_KEY_SECRET': JSON.stringify(process.env.API_KEY_SECRET),
+      'process.env.NODE_DEBUG': JSON.stringify(process.env.NODE_DEBUG || false)
     })
   ]
 }
