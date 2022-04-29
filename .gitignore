@@ -133,8 +133,4 @@ dist
 .pnp.*
 
 # Assets
-assets/*.js
-assets/*.map.js
-assets/*.css
-assets/*.html
-assets/*.txt
+assets

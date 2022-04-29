@@ -2,12 +2,12 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 
 const MeetIcon = (props: SVGProps<SVGSVGElement>) => (
-  <div className="flex items-center gap-2">
+  <div className="flex items-center gap-3 h-full">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       xmlSpace="preserve"
-      className="w-10 h-10 md:w-12 md:h-12"
+      className="h-6 w-6 md:w-8 md:h-8"
       {...props}
     >
       <style>{'.st135{fill:#f5bb41}.st138{fill:#4ca853}'}</style>
@@ -54,8 +54,10 @@ const MeetIcon = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
     </svg>
-    <span className="text-base md:text-lg font-semibold">
-      Google Meet Clone
+    <span className="self-center text-lg md:text-xl font-semibold whitespace-nowrap dark:text-white flex gap-1">
+      <span className="hidden md:block">Google</span>
+      <span>Meet</span>
+      <span className="hidden md:block">Clone</span>
     </span>
   </div>
 )

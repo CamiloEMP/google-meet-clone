@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const buildDir = path.join(__dirname, 'assets')
+
+dotenv.config()
 
 module.exports = {
   entry: './src/index.tsx',
@@ -23,10 +27,6 @@ module.exports = {
         use: ['ts-loader']
       },
       {
-        test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
         use: ['file-loader']
       }
@@ -35,6 +35,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html')
+    }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_SUPABASE_URL': JSON.stringify(
+        process.env.REACT_APP_SUPABASE_URL
+      ),
+      'process.env.REACT_APP_SUPABASE_ANON_KEY': JSON.stringify(
+        process.env.REACT_APP_SUPABASE_ANON_KEY
+      )
     })
   ]
 }
