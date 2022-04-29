@@ -1,8 +1,8 @@
+import { Button } from 'flowbite-react'
 import React, { useState } from 'react'
 import { LoginCard } from '../components/auth/login'
 import { LogupCard } from '../components/auth/logup'
 import { AuthActions } from '../components/auth/types'
-import { Button } from '../components/Buttons/ButtonPrimary'
 import { NavBar } from '../components/Navbar'
 
 export const Home = () => {
@@ -21,24 +21,27 @@ export const Home = () => {
             <div className="flex gap-2 w-fit items-center mx-auto md:mx-0">
               <Button
                 type="button"
-                text="Inicia Sesión"
-                action={() => {
+                onClick={() => {
                   setOver(true)
                   setAction('login')
                 }}
-                otherClass="select-none"
-              />
+                className="select-none"
+              >
+                Inicia Sesión
+              </Button>
 
               <span>o</span>
-              <button
+              <Button
+                type="button"
                 onClick={() => {
                   setOver(true)
                   setAction('logup')
                 }}
-                className="select-none text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-md text-sm md:text-base px-8 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                className="select-none"
+                color="light"
               >
                 Registrate
-              </button>
+              </Button>
             </div>
           </div>
           <div className="w-full md:w-2/4 px-4 md:px-0">

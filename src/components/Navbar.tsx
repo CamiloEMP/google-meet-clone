@@ -2,11 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import MeetIcon from '../assets/MeetIcon'
 import { useSession } from '../hooks/useSession'
+import { Navbar as NavbarContainer, Button } from 'flowbite-react'
 
 export const NavBar = () => {
   const { isAuth, user } = useSession()
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+    <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link
           to="/"
@@ -17,8 +18,14 @@ export const NavBar = () => {
             <MeetIcon />
           </span>
         </Link>
-        {isAuth && <button className="select-none">{user?.email}</button>}
+        {isAuth && (
+          <Link to="/dashboard">
+            <Button className="select-none" color="light">
+              {user?.email}
+            </Button>
+          </Link>
+        )}
       </div>
-    </nav>
+    </NavbarContainer>
   )
 }
