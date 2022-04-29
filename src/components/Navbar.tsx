@@ -6,6 +6,7 @@ import { Navbar as NavbarContainer, Button } from 'flowbite-react'
 
 export const NavBar = () => {
   const { isAuth, user } = useSession()
+  console.log(isAuth)
   return (
     <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">

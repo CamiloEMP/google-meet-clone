@@ -54,12 +54,12 @@ export const Dashboard = () => {
           </div>
           <Dropdown.Divider />
           {meets.map((x, i) => (
-            <>
+            <div key={`meet-info-item-${i}`} className={i !== 0 ? '' : ''}>
               {i !== 0 && (
-                <div className="border-b border-gray-200 dark:border-gray-700" />
+                <div className="border-b border-gray-200 dark:border-gray-700 mb-2" />
               )}
-              <MeetItem key={`meet-info-item-${i}`} data={x} />
-            </>
+              <MeetItem data={x} />
+            </div>
           ))}
         </Card>
       </div>
