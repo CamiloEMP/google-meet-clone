@@ -1,12 +1,10 @@
 import React from 'react'
 import { CardMeet } from '../components/CardMeet'
 import { CardMeetItem } from '../components/CardMeetItem'
-import { Header } from '../components/Header'
 
 export const Dashboard = () => {
   return (
     <>
-      <Header />
       <CardMeet>
         <CardMeetItem
           title="Reuniones"

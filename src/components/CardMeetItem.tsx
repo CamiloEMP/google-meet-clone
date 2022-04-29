@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './Button'
+import { Button } from './Buttons/ButtonPrimary'
 
 interface Props {
   title: string
@@ -24,7 +24,7 @@ export const CardMeetItem = ({
           </span>
         )}
       </div>
-      <Button>{titleButton}</Button>
+      <Button type="button" text={titleButton} />
     </div>
   )
 }
