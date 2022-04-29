@@ -1,6 +1,6 @@
 import React from 'react'
-import EmailIcon from '../../assets/EmailIcon'
-import PasswordIcon from '../../assets/PasswordIcon'
+import { LockClosed } from '../../assets/icons/lockClosed.icon'
+import { MailIcon } from '../../assets/icons/mail.icon'
 
 interface Props {
   values: {
@@ -22,7 +22,7 @@ export const Inputs = ({ values, setValues }: Props) => {
     <>
       <div className="relative mb-6">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <EmailIcon />
+          <MailIcon />
         </div>
         <input
           value={values.email}
@@ -36,7 +36,7 @@ export const Inputs = ({ values, setValues }: Props) => {
       </div>
       <div className="relative mb-6">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <PasswordIcon />
+          <LockClosed />
         </div>
         <input
           value={values.password}
