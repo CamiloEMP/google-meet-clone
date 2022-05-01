@@ -21,6 +21,7 @@
     "@supabase/supabase-js": "^1.35.2",
     "@twilio/runtime-handler": "1.2.2",
     "cross-env": "^7.0.3",
+    "short-unique-id": "^4.4.4",
     "twilio": "^3.56"
   },
   "devDependencies": {

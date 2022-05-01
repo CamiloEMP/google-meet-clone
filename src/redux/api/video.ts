@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { supabase } from '../../../supabase'
+import { supabase } from '../../supabase'
+import { videoCrateRoom, videoRoom } from '../types/video'
 
-export const apiOrganization = createApi({
-  reducerPath: 'apiOrganization',
+export const apiVideo = createApi({
+  reducerPath: 'apiVideo',
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
     prepareHeaders: headers => {
@@ -16,13 +17,14 @@ export const apiOrganization = createApi({
     }
   }),
   endpoints: builder => ({
-    getOrganization: builder.query({
-      query: () => ({
-        url: 'orgs/info',
-        method: 'GET'
+    createRoom: builder.query<videoCrateRoom, videoRoom>({
+      query: body => ({
+        url: 'video/create',
+        method: 'POST',
+        body
       })
     })
   })
 })
 
-export const { useGetOrganizationQuery } = apiOrganization
+export const { useCreateRoomQuery } = apiVideo
