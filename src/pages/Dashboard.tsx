@@ -54,7 +54,7 @@ export const Dashboard = () => {
           </div>
           <Dropdown.Divider />
           {meets.map((x, i) => (
-            <div key={`meet-info-item-${i}`} className={i !== 0 ? '' : ''}>
+            <div key={`meet-info-item-${i}`}>
               {i !== 0 && (
                 <div className="border-b border-gray-200 dark:border-gray-700 mb-2" />
               )}
