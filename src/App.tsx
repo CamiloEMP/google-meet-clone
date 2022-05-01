@@ -13,6 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/meet-config" element={<MeetConfig />} />
         <Route path=":room" element={<Room />} />
       </Routes>
     </Provider>
