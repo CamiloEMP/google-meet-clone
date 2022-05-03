@@ -1,16 +1,15 @@
 # funcionName
 descripsion
 
-# Path
+## Path
 ``
 
-# Como se usa
-```js
-const { data } = funcionName('')
-
-console.log(data)
+## Como se usa
+```ts
+funcionName(''): Promise<AxiosResponse>
 ```
 
+## Respuesta
 ```js
 {
   data: ''
