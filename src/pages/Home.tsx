@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'flowbite-react'
+import { videoAccessRoom } from '../api/video/access'
 import { LoginCard } from '../components/auth/login'
 import { LogupCard } from '../components/auth/logup'
 import { AuthActions } from '../components/auth/types'
@@ -8,6 +9,11 @@ import { NavBar } from '../components/Navbar'
 export const Home = () => {
   const [over, setOver] = useState(false)
   const [action, setAction] = useState<AuthActions>('login')
+
+  useEffect(() => {
+    videoAccessRoom({ id: 'tOGZcWYRy' }).then(console.log)
+  }, [])
+
 
   return (
     <div className="flex flex-col w-full h-full">

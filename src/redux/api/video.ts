@@ -23,8 +23,15 @@ export const apiVideo = createApi({
         method: 'POST',
         body
       })
+    }),
+    accessRoom: builder.query<videoCrateRoom, { id: string }>({
+      query: body => ({
+        url: 'video/access',
+        method: 'GET',
+        body
+      })
     })
   })
 })
 
-export const { useCreateRoomQuery } = apiVideo
+export const { useCreateRoomQuery, useAccessRoomQuery } = apiVideo
