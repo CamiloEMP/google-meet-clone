@@ -13,8 +13,7 @@ export function videoAccessRoom({ id }: Param) {
   const headers = headersApi()
   return axios.request<ReturnData>({
     method: 'GET',
-    url: '/video/access',
-    data: { id },
+    url: `/video/access?id=${id}`,
     headers
   })
 }
