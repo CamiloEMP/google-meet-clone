@@ -17,7 +17,9 @@ export const Button = ({
     <button
       type={type}
       onClick={action}
-      className={`font-normal rounded-md text-sm md:text-base px-8 py-2 bg-blue-600 text-white  hover:bg-opacity-90 ${otherClass} `}
+      className={`font-normal rounded-md text-sm md:text-base px-8 py-2 bg-blue-600 text-white  hover:bg-opacity-90 ${
+        otherClass || ''
+      } `}
     >
       {text}
     </button>
