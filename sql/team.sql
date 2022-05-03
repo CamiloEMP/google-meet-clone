@@ -4,7 +4,7 @@ create table organizations (
   name text,
   owner uuid references auth.users not null,
 
-  primary key (uid)
+  primary key (uid),
   unique(uid)
 )
 

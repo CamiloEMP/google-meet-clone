@@ -6,6 +6,7 @@ import { MeetConfig } from './pages/MeetConfig'
 import { Room } from './pages/room'
 import { Provider } from 'react-redux'
 import { store } from './redux'
+import { Profile } from './pages/Profile'
 
 export const App = () => {
   return (
@@ -13,7 +14,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/meet-config" element={<MeetConfig />} />
+        <Route path="/meet-config/:nameRoom" element={<MeetConfig />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path=":room" element={<Room />} />
       </Routes>
     </Provider>

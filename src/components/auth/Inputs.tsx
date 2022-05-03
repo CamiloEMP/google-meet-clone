@@ -21,7 +21,7 @@ export const Inputs = ({ values, setValues }: Props) => {
 
   return (
     <>
-      <div className="relative mb-6">
+      <div className="mb-6">
         <TextInput
           value={values.email}
           onChange={handleChange}
@@ -29,13 +29,10 @@ export const Inputs = ({ values, setValues }: Props) => {
           id="email"
           name="email"
           placeholder="ejemplo@gmail.com"
-          icon={EmailIcon}
+          addon={<EmailIcon />}
         />
       </div>
-      <div className="relative mb-6">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <PasswordIcon />
-        </div>
+      <div className="mb-6">
         <TextInput
           value={values.password}
           onChange={handleChange}
@@ -43,7 +40,7 @@ export const Inputs = ({ values, setValues }: Props) => {
           id="password"
           name="password"
           placeholder="********"
-          icon={PasswordIcon}
+          addon={<PasswordIcon />}
         />
       </div>
     </>

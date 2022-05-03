@@ -42,7 +42,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
           <ButtonModal onClose={onClose} />
         </header>
         <form className="p-6 flex flex-col" onSubmit={handleSubmit}>
-          <div className="relative mb-6">
+          <div className="mb-6">
             <TextInput
               value={name}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -52,7 +52,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
               id="name"
               name="name"
               placeholder="Tú nombre"
-              icon={UserIcon}
+              addon={<UserIcon />}
             />
           </div>
           <Inputs values={values} setValues={setValues} />

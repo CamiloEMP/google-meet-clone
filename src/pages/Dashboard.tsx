@@ -1,7 +1,10 @@
-import { Button, Card, Dropdown } from 'flowbite-react'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Card, Dropdown } from 'flowbite-react'
+import React, { useState } from 'react'
 import { NavBar } from '../components/Navbar'
+import { MeetItem } from '../components/MeetItem'
+import { NewMeet } from '../components/NewMeet'
+import { useNavigate } from 'react-router-dom'
+import { v4 } from 'uuid'
 
 interface MeetInfo {
   title: string
@@ -10,28 +13,22 @@ interface MeetInfo {
   uid: string
 }
 
-interface MeetItemProps {
-  data: MeetInfo
-}
-
-function MeetItem({ data }: MeetItemProps): JSX.Element {
-  return (
-    <div className="flex justify-between items-center">
-      <div className="min-w-0 select-none">
-        <h4 className="text-base font-bold truncate text-gray-900">
-          {data.title}
-        </h4>
-        <small className="text-xs text-gray-500 truncate">{data.date}</small>
-      </div>
-      <Link to={`/${data.uid}`}>
-        <Button>Unirse</Button>
-      </Link>
-    </div>
-  )
-}
-
 export const Dashboard = () => {
-  const meets: MeetInfo[] = Array.from({ length: 14 }).map((_, i) => ({
+  const [over, setOver] = useState(false)
+  const navigate = useNavigate()
+
+  const handleRoom = (nameRoom: string) => {
+    setOver(false)
+    let room: string
+    if (nameRoom === 'default') {
+      room = v4()
+    } else {
+      room = nameRoom
+    }
+    navigate(`/meet-config/${room}`)
+  }
+
+  const meets: MeetInfo[] = Array.from({ length: 8 }).map((_, i) => ({
     uid: 'xml-sas-sd' + i,
     title: 'mi reunion ' + (i + 1),
     org: 'my Team',
@@ -47,9 +44,13 @@ export const Dashboard = () => {
             <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Reuniones
             </h3>
-            <Dropdown label="Nueva Reunion">
-              <Dropdown.Item>Reunirse Ahora</Dropdown.Item>
-              <Dropdown.Item>Programar Runion</Dropdown.Item>
+            <Dropdown className="border-0" label="Nueva Reunion">
+              <Dropdown.Item onClick={() => handleRoom('default')}>
+                Reunirse Ahora
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => setOver(true)}>
+                Programar Runion
+              </Dropdown.Item>
             </Dropdown>
           </div>
           <Dropdown.Divider />
@@ -63,6 +64,14 @@ export const Dashboard = () => {
           ))}
         </Card>
       </div>
+      {over && (
+        <section
+          role="dialog"
+          className="absolute inset-0 z-10 h-full w-full bg-black/25 flex justify-center items-center overflow-y-auto overflow-x-hidden"
+        >
+          <NewMeet onClick={handleRoom} onClose={() => setOver(false)} />
+        </section>
+      )}
     </>
   )
 }

@@ -1,25 +1,21 @@
-import { Button } from 'flowbite-react'
 import React, { useState } from 'react'
+import { Button } from 'flowbite-react'
 import { LoginCard } from '../components/auth/login'
 import { LogupCard } from '../components/auth/logup'
 import { AuthActions } from '../components/auth/types'
 import { NavBar } from '../components/Navbar'
-import { useCreateRoomQuery } from '../redux/api/video'
 
 export const Home = () => {
   const [over, setOver] = useState(false)
   const [action, setAction] = useState<AuthActions>('login')
 
-  const d = useCreateRoomQuery({ name: 'myroom', idOrg: 'idFromOrg' })
-
-  console.log(d)
   return (
     <div className="flex flex-col w-full h-full">
       <NavBar />
       <main className="flex flex-col w-full h-full">
         <section className="flex-1 container mx-auto flex h-full w-full items-center flex-col-reverse md:flex-row gap-4 md:gap-0">
           <div className="w-full md:w-2/4 px-4 md:px-0 flex-1 md:flex-auto">
-            <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-center md:text-left dark:text-white">
               Reunete con tu equipo, familiares y tus amigos
             </h1>
             <div className="flex gap-2 w-fit items-center mx-auto md:mx-0">
