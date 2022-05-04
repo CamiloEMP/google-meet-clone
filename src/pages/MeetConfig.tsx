@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Twilio from 'twilio-video'
 import CamIcon from '../assets/CameraIcon'
 import ConIcon from '../assets/ConfigIcon'
 import MicroIcon from '../assets/MicrophoneIcon'
@@ -9,10 +10,26 @@ import { NavBar } from '../components/Navbar'
 import { useCreateRoomQuery } from '../redux/api/video'
 
 export function MeetConfig() {
-  const params = useParams()
-  const room = params.nameRoom || ''
-  const { data } = useCreateRoomQuery({ name: room })
-  console.log(data)
+  const [isActive, setIsActive] = useState({
+    cam: false,
+    mic: false
+  })
+  const localVideo = useRef<HTMLDivElement>(null)
+  // const params = useParams()
+  // const room = params.nameRoom || ''
+  // const { data } = useCreateRoomQuery({ name: room })
+
+  useEffect(() => {
+    async function addLocalVideo() {
+      if (localVideo.current) {
+        const track = await Twilio.createLocalVideoTrack()
+        console.log({ track })
+        localVideo.current.appendChild(track.attach())
+      }
+    }
+    addLocalVideo()
+  }, [])
+
   return (
     <>
       <NavBar />
@@ -30,7 +47,10 @@ export function MeetConfig() {
             </button>
           </div>
         </section>
-        <div className="max-w-lg h-72 lg:h-80 border rounded-md"></div>
+        <div
+          className="max-w-lg h-72 lg:h-80 border rounded-md"
+          ref={localVideo}
+        />
         <section className="flex items-center gap-4">
           <ButtonMeet icon={<CamIcon />} />
           <ButtonMeet icon={<MicroIcon />} />
