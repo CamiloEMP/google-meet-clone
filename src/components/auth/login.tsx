@@ -17,8 +17,11 @@ export function LoginCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { user, session } = await LoginUser(values)
+
     if (user !== null && session !== null) {
       setIsLogged(true)
+    } else {
+      alert('Usuario o contraseña incorrectos')
     }
   }
 
