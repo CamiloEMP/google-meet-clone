@@ -919,11 +919,11 @@ input:checked + .toggle-bg {
 .mt-16 {
   margin-top: 4rem;
 }
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
 .ml-auto {
   margin-left: auto;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .mt-2 {
   margin-top: 0.5rem;
@@ -1287,14 +1287,14 @@ input:checked + .toggle-bg {
 .p-4 {
   padding: 1rem;
 }
-.p-6 {
-  padding: 1.5rem;
-}
 .p-1\.5 {
   padding: 0.375rem;
 }
 .p-1 {
   padding: 0.25rem;
+}
+.p-6 {
+  padding: 1.5rem;
 }
 .px-2 {
   padding-left: 0.5rem;
