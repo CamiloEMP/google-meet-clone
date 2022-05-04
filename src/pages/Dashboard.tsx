@@ -28,7 +28,7 @@ export const Dashboard = () => {
     navigate(`/meet-config/${room}`)
   }
 
-  const meets: MeetInfo[] = Array.from({ length: 8 }).map((_, i) => ({
+  const meets: MeetInfo[] = Array.from({ length: 14 }).map((_, i) => ({
     uid: 'xml-sas-sd' + i,
     title: 'mi reunion ' + (i + 1),
     org: 'my Team',
@@ -44,7 +44,7 @@ export const Dashboard = () => {
             <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Reuniones
             </h3>
-            <Dropdown className="border-0" label="Nueva Reunion">
+            <Dropdown className="border-none" label="Nueva Reunion">
               <Dropdown.Item onClick={() => handleRoom('default')}>
                 Reunirse Ahora
               </Dropdown.Item>
