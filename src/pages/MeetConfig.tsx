@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import Twilio from 'twilio-video'
 import CamIcon from '../assets/CameraIcon'
 import ConIcon from '../assets/ConfigIcon'
@@ -7,7 +6,7 @@ import MicroIcon from '../assets/MicrophoneIcon'
 import { ButtonMeet } from '../components/Buttons/ButtonMeet'
 import { Button } from '../components/Buttons/ButtonPrimary'
 import { NavBar } from '../components/Navbar'
-import { useCreateRoomQuery } from '../redux/api/video'
+import { useVideoContext } from '../hooks/useVideoContext'
 
 export function MeetConfig() {
   const [isActive, setIsActive] = useState({
@@ -15,15 +14,11 @@ export function MeetConfig() {
     mic: false
   })
   const localVideo = useRef<HTMLDivElement>(null)
-  // const params = useParams()
-  // const room = params.nameRoom || ''
-  // const { data } = useCreateRoomQuery({ name: room })
 
   useEffect(() => {
     async function addLocalVideo() {
       if (localVideo.current) {
         const track = await Twilio.createLocalVideoTrack()
-        console.log({ track })
         localVideo.current.appendChild(track.attach())
       }
     }

@@ -4,24 +4,24 @@ import { Dashboard } from './pages/Dashboard'
 import { Home } from './pages/Home'
 import { MeetConfig } from './pages/MeetConfig'
 import { Room } from './pages/room'
-import { Provider } from 'react-redux'
-import { store } from './redux'
 import { Profile } from './pages/Profile'
 import { useSession } from './hooks/useSession'
 import { Layout } from './container/Layout'
+import { useVideoContext } from './hooks/useVideoContext'
 
 export const App = () => {
   const { isAuth } = useSession()
+  const { isConnecting } = useVideoContext()
   return (
     <Layout>
-      <Provider store={store}>
-        <Routes>
-          <Route path="/" element={isAuth ? <Dashboard /> : <Home />} />
-          <Route path="/meet-config/:nameRoom" element={<MeetConfig />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path=":room" element={<Room />} />
-        </Routes>
-      </Provider>
+      <Routes>
+        <Route path="/" element={isAuth ? <Dashboard /> : <Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route
+          path=":room"
+          element={isConnecting ? <Room /> : <MeetConfig />}
+        />
+      </Routes>
     </Layout>
   )
 }
