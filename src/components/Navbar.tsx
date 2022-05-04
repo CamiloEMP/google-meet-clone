@@ -14,11 +14,15 @@ export const NavBar = () => {
   return (
     <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <div className="flex items-center" aria-label="Google Meet Inicio">
+        <Link
+          to="/"
+          className="flex items-center"
+          aria-label="Google Meet Inicio"
+        >
           <span role="img" className="mr-3 h-6 sm:h-9 select-none">
             <MeetIcon />
           </span>
-        </div>
+        </Link>
         <div className="flex items-center gap-5">
           {isAuth && (
             <Link to="/profile">

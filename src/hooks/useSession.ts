@@ -12,14 +12,13 @@ export function useSession() {
   useEffect(() => {
     const session = supabase.auth.session()
     console.log(session)
-    async function getUser() {
-      const user: UserProfiles = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', session?.user?.id)
-      console.log(user)
-    }
-    getUser()
+    // async function getUser() {
+    //   const user: UserProfiles = await supabase
+    //     .from('profiles')
+    //     .select('*')
+    //     .eq('id', session?.user?.id)
+    // }
+    // getUser()
     setUser(session?.user ?? null)
 
     const { data: authListener } = supabase.auth.onAuthStateChange(

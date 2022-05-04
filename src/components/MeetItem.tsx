@@ -25,7 +25,7 @@ export const MeetItem = ({ data }: MeetItemProps): JSX.Element => {
         </small>
       </div>
       <Link to={`/${data.uid}`}>
-        <Button className="border-0">Unirse</Button>
+        <Button className="border-none">Unirse</Button>
       </Link>
     </div>
   )

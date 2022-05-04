@@ -10,10 +10,9 @@ export const Home = () => {
   const [over, setOver] = useState(false)
   const [action, setAction] = useState<AuthActions>('login')
 
-  useEffect(() => {
-    videoAccessRoom({ id: 'tOGZcWYRy' }).then(console.log)
-  }, [])
-
+  // useEffect(() => {
+  //   videoAccessRoom({ id: 'tOGZcWYRy' }).then(console.log)
+  // }, [])
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -31,12 +30,12 @@ export const Home = () => {
                   setOver(true)
                   setAction('login')
                 }}
-                className="select-none"
+                className="select-none border-none"
               >
                 Inicia Sesión
               </Button>
 
-              <span>o</span>
+              <span className="dark:text-white">o</span>
               <Button
                 type="button"
                 onClick={() => {
