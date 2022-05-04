@@ -11,7 +11,6 @@ export function useSession() {
 
   useEffect(() => {
     const session = supabase.auth.session()
-    console.log(session)
     // async function getUser() {
     //   const user: UserProfiles = await supabase
     //     .from('profiles')

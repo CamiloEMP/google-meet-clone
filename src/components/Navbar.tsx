@@ -10,7 +10,6 @@ import {
 
 export const NavBar = () => {
   const { isAuth, user } = useSession()
-  console.log(user)
   return (
     <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
