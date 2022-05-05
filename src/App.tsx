@@ -8,6 +8,7 @@ import { Profile } from './pages/Profile'
 import { useSession } from './hooks/useSession'
 import { Layout } from './container/Layout'
 import { useVideoContext } from './hooks/useVideoContext'
+import { AuthSign } from './components/auth'
 
 export const App = () => {
   const { isAuth } = useSession()
@@ -22,6 +23,7 @@ export const App = () => {
           element={isConnecting ? <Room /> : <MeetConfig />}
         />
       </Routes>
+      <AuthSign />
     </Layout>
   )
 }

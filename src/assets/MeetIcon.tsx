@@ -54,7 +54,7 @@ const MeetIcon = (props: SVGProps<SVGSVGElement>) => (
         />
       </g>
     </svg>
-    <span className="self-center text-lg md:text-xl font-semibold whitespace-nowrap dark:text-white flex gap-1">
+    <span className="self-center text-lg md:text-xl font-semibold whitespace-nowrap flex gap-1 [color:#6B7280]">
       <span className="hidden md:block">Google</span>
       <span>Meet</span>
       <span className="hidden md:block">Clone</span>

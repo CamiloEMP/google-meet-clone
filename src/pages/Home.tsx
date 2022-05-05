@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button } from 'flowbite-react'
-import { videoAccessRoom } from '../api/video/access'
-import { LoginCard } from '../components/auth/login'
-import { LogupCard } from '../components/auth/logup'
-import { AuthActions } from '../components/auth/types'
 import { NavBar } from '../components/Navbar'
+import { useAppContext } from '../hooks/useAppContext'
 
 export const Home = () => {
-  const [over, setOver] = useState(false)
-  const [action, setAction] = useState<AuthActions>('login')
-
-  // useEffect(() => {
-  //   videoAccessRoom({ id: 'tOGZcWYRy' }).then(console.log)
-  // }, [])
+  const { toggleAuthDialog } = useAppContext()
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -27,8 +19,7 @@ export const Home = () => {
               <Button
                 type="button"
                 onClick={() => {
-                  setOver(true)
-                  setAction('login')
+                  toggleAuthDialog(true, 'login')
                 }}
                 className="select-none border-none"
               >
@@ -39,8 +30,7 @@ export const Home = () => {
               <Button
                 type="button"
                 onClick={() => {
-                  setOver(true)
-                  setAction('logup')
+                  toggleAuthDialog(true, 'logup')
                 }}
                 className="select-none"
                 color="light"
@@ -58,24 +48,6 @@ export const Home = () => {
           </div>
         </section>
       </main>
-      {over && (
-        <section
-          role="dialog"
-          className="absolute inset-0 z-10 h-full w-full bg-black/25 flex justify-center items-center overflow-y-auto overflow-x-hidden"
-        >
-          {action === 'login' ? (
-            <LoginCard
-              onClose={() => setOver(false)}
-              onChange={a => setAction(a)}
-            />
-          ) : (
-            <LogupCard
-              onClose={() => setOver(false)}
-              onChange={a => setAction(a)}
-            />
-          )}
-        </section>
-      )}
     </div>
   )
 }

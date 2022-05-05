@@ -9,7 +9,7 @@ import { setCurrentMediaP, useMediaTrackI } from '../types/video.types'
 
 async function getAllMediaTrack() {
   const media = await navigator.mediaDevices.enumerateDevices()
-  console.log()
+  console.log(media.filter(x => x.kind === 'audiooutput'))
   return {
     video: media.filter(x => x.kind === 'videoinput'),
     audio: media.filter(x => x.kind === 'audioinput')
@@ -37,15 +37,12 @@ export function useMediaTrack(): useMediaTrackI {
   }
 
   // Selecciona los Dispositivos
-  async function setCurrentMedia({
-    deviceAudio,
-    deviceVideo
-  }: setCurrentMediaP) {
+  function setCurrentMedia({ deviceAudio, deviceVideo }: setCurrentMediaP) {
     if (typeof deviceVideo !== 'undefined') {
-      setMediaCurrentVideo(await createLocalVideoTrack(deviceVideo))
+      createLocalVideoTrack(deviceVideo).catch(e => console.error(e))
     }
     if (typeof deviceAudio !== 'undefined') {
-      setMediaCurrentAudio(await createLocalAudioTrack(deviceAudio))
+      createLocalAudioTrack(deviceAudio).catch(e => console.error(e))
     }
   }
 

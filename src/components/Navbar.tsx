@@ -3,13 +3,38 @@ import { Link } from 'react-router-dom'
 import MeetIcon from '../assets/MeetIcon'
 import { useSession } from '../hooks/useSession'
 import {
-  Navbar as NavbarContainer,
-  Button,
-  DarkThemeToggle
-} from 'flowbite-react'
+  SunIcon,
+  MoonIcon,
+  QuestionMarkCircleIcon
+} from '@heroicons/react/outline'
+import { Navbar as NavbarContainer, Button } from 'flowbite-react'
+import { useUser } from '../hooks/useUser'
+import { useAppContext } from '../hooks/useAppContext'
+
+function MenuRightNoAuth(): JSX.Element {
+  const { toggleAuthDialog } = useAppContext()
+  return (
+    <>
+      {/*
+      <Button
+        icon={QuestionMarkCircleIcon}
+        color="light"
+        className="!px-0"
+        pill
+      />
+      */}
+      <Button onClick={() => toggleAuthDialog(true, 'logup')} color="light">
+        Registrate
+      </Button>
+      <Button onClick={() => toggleAuthDialog(true, 'login')}>
+        Iniciar Sesion
+      </Button>
+    </>
+  )
+}
 
 export const NavBar = () => {
-  const { isAuth, user } = useSession()
+  const { isAuth } = useUser()
   return (
     <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -22,15 +47,8 @@ export const NavBar = () => {
             <MeetIcon />
           </span>
         </Link>
-        <div className="flex items-center gap-5">
-          {isAuth && (
-            <Link to="/profile">
-              <Button className="select-none" color="light">
-                {user?.email}
-              </Button>
-            </Link>
-          )}
-          <DarkThemeToggle />
+        <div className="flex items-center gap-2">
+          {isAuth ? null : <MenuRightNoAuth />}
         </div>
       </div>
     </NavbarContainer>
