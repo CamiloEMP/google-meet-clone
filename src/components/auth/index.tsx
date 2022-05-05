@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAppContext } from '../../hooks/useAppContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { LoginCard } from './login'
 import { LogupCard } from './logup'
 
 export function AuthSign(): JSX.Element {
   const { userAuthDialogDisplay, toggleAuthDialog, userAuthDialogShow } =
-    useAppContext()
+    useAuthContext()
 
   return (
     <>

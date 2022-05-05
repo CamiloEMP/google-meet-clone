@@ -3,8 +3,9 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { App } from './App'
-import { AppProvider } from './provider/app.provider'
-import { VideoProvider } from './provider/video.provider'
+import { AppProvider } from './provider/app'
+import { AuthProvider } from './provider/auth'
+import { VideoProvider } from './provider/video'
 
 const container = document.getElementById('app')
 const root = createRoot(container!)
@@ -12,11 +13,13 @@ const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <AppProvider>
-      <VideoProvider>
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </VideoProvider>
+      <HashRouter>
+        <AuthProvider>
+          <VideoProvider>
+            <App />
+          </VideoProvider>
+        </AuthProvider>
+      </HashRouter>
     </AppProvider>
   </React.StrictMode>
 )

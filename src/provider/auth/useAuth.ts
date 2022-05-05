@@ -1,12 +1,9 @@
 import { User } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
-import { supabase } from '../supabase'
-import { useUserI } from '../types/app.types'
+import { supabase } from '../../supabase'
+import { useAuthI } from '../../types/auth.types'
 
-/**
- * @description Maneja la autentificacion del usuario
- */
-export function useUser(): useUserI {
+export function useAuth(): useAuthI {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
@@ -35,7 +32,6 @@ export function useUser(): useUserI {
     setDialogDisplay(display || userAuthDialogDisplay)
   }
 
-  // Old
   return {
     isAuth: !!user,
     userAuthDialogShow,

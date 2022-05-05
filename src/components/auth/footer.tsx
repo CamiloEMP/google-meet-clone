@@ -1,13 +1,13 @@
 import { Button } from 'flowbite-react'
 import React from 'react'
-import { useAppContext } from '../../hooks/useAppContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 interface Props {
   isLogin: true | false
 }
 
 export const Footer = ({ isLogin }: Props): JSX.Element => {
-  const { toggleAuthDialog } = useAppContext()
+  const { toggleAuthDialog } = useAuthContext()
   const text = isLogin ? 'Iniciar Sesión' : 'Registrate'
   return (
     <footer className="flex flex-col gap-2">

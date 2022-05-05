@@ -1,18 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import MeetIcon from '../assets/MeetIcon'
-import { useSession } from '../hooks/useSession'
 import {
   SunIcon,
   MoonIcon,
   QuestionMarkCircleIcon
 } from '@heroicons/react/outline'
-import { Navbar as NavbarContainer, Button } from 'flowbite-react'
-import { useUser } from '../hooks/useUser'
-import { useAppContext } from '../hooks/useAppContext'
+import { Navbar as NavbarContainer, Button, Dropdown } from 'flowbite-react'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { AvatarIcon } from '../assets/avatar'
+
+function MenuRightAuth(): JSX.Element {
+  return (
+    <>
+      <Dropdown label={<AvatarIcon />} pill inline arrowIcon={false}>
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+    </>
+  )
+}
 
 function MenuRightNoAuth(): JSX.Element {
-  const { toggleAuthDialog } = useAppContext()
+  const { toggleAuthDialog } = useAuthContext()
   return (
     <>
       {/*
@@ -34,7 +46,7 @@ function MenuRightNoAuth(): JSX.Element {
 }
 
 export const NavBar = () => {
-  const { isAuth } = useUser()
+  const { isAuth } = useAuthContext()
   return (
     <NavbarContainer rounded={false}>
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -48,7 +60,7 @@ export const NavBar = () => {
           </span>
         </Link>
         <div className="flex items-center gap-2">
-          {isAuth ? null : <MenuRightNoAuth />}
+          {isAuth ? <MenuRightAuth /> : <MenuRightNoAuth />}
         </div>
       </div>
     </NavbarContainer>

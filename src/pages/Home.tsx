@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from 'flowbite-react'
 import { NavBar } from '../components/Navbar'
-import { useAppContext } from '../hooks/useAppContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export const Home = () => {
-  const { toggleAuthDialog } = useAppContext()
+  const { toggleAuthDialog } = useAuthContext()
 
   return (
     <div className="flex flex-col w-full h-full">

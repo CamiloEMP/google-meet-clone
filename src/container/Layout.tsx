@@ -5,5 +5,9 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => {
-  return <section className="dark:bg-gray-800 min-h-screen">{children}</section>
+  return (
+    <section className="dark:bg-gray-800 min-h-screen h-full w-full">
+      {children}
+    </section>
+  )
 }
