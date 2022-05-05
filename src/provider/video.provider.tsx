@@ -1,4 +1,5 @@
 import React, { createContext } from 'react'
+import { useMediaTrack } from '../hooks/useMediaTrack'
 import { useRoom } from '../hooks/useRoom'
 import { VideoContextI } from '../types/video.types'
 
@@ -11,9 +12,10 @@ export const VideoContext = createContext<VideoContextI>(null!)
 export function VideoProvider({
   children
 }: React.PropsWithChildren<unknown>): JSX.Element {
-  const { isConnecting, connect } = useRoom()
+  const useRoomProps = useRoom()
+  const useMediaTrackProps = useMediaTrack()
   return (
-    <VideoContext.Provider value={{ isConnecting, connect }}>
+    <VideoContext.Provider value={{ ...useRoomProps, ...useMediaTrackProps }}>
       {children}
     </VideoContext.Provider>
   )
