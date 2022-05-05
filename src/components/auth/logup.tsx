@@ -8,7 +8,7 @@ import { Inputs } from './Inputs'
 import { AuthCommonProps, User } from './types'
 import { TextInput } from 'flowbite-react'
 
-export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
+export function LogupCard({ onClose }: AuthCommonProps): JSX.Element {
   const navigate = useNavigate()
   const [isLogged, setIsLogged] = useState(false)
   const [name, setName] = useState<string>('')
@@ -28,7 +28,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
 
   useEffect(() => {
     if (isLogged) {
-      navigate('/dashboard')
+      navigate('/')
     }
   }, [isLogged])
 
@@ -56,7 +56,7 @@ export function LogupCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
             />
           </div>
           <Inputs values={values} setValues={setValues} />
-          <Footer onClick={() => onChange('login')} isLogin={false} />
+          <Footer isLogin={false} />
         </form>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
-import { useMediaTrack } from '../hooks/useMediaTrack'
-import { useRoom } from '../hooks/useRoom'
-import { VideoContextI } from '../types/video.types'
+import { useMediaTrack } from '../../hooks/useMediaTrack'
+import { useRoom } from '../../hooks/useRoom'
+import { VideoContextI } from '../../types/video.types'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 export const VideoContext = createContext<VideoContextI>(null!)

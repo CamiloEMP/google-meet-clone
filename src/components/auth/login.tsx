@@ -7,7 +7,7 @@ import { Footer } from './footer'
 import { Inputs } from './Inputs'
 import { AuthCommonProps } from './types'
 
-export function LoginCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
+export function LoginCard({ onClose }: AuthCommonProps): JSX.Element {
   const navigate = useNavigate()
   const [isLogged, setIsLogged] = useState(false)
   const [values, setValues] = useState({
@@ -27,7 +27,7 @@ export function LoginCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
 
   useEffect(() => {
     if (isLogged) {
-      navigate('/dashboard')
+      navigate('/')
     }
   }, [isLogged])
 
@@ -42,7 +42,7 @@ export function LoginCard({ onClose, onChange }: AuthCommonProps): JSX.Element {
         </div>
         <form className="p-6 flex flex-col" onSubmit={handleSubmit}>
           <Inputs values={values} setValues={setValues} />
-          <Footer onClick={() => onChange('logup')} isLogin={true} />
+          <Footer isLogin={true} />
         </form>
       </div>
     </div>
