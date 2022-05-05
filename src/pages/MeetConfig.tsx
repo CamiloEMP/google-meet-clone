@@ -9,21 +9,25 @@ import { NavBar } from '../components/Navbar'
 import { useVideoContext } from '../hooks/useVideoContext'
 
 export function MeetConfig() {
+  const { mediaCurrentAudio, mediaCurrentVideo } = useVideoContext()
   const [isActive, setIsActive] = useState({
     cam: false,
     mic: false
   })
   const localVideo = useRef<HTMLDivElement>(null)
+  const localAudio = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    async function addLocalVideo() {
-      if (localVideo.current) {
-        const track = await Twilio.createLocalVideoTrack()
-        localVideo.current.appendChild(track.attach())
-      }
+    if (localVideo.current && mediaCurrentVideo)
+      localVideo.current.append(mediaCurrentVideo.attach())
+  }, [mediaCurrentVideo])
+
+  useEffect(() => {
+    if (localAudio.current && mediaCurrentAudio) {
+      localAudio.current.append(mediaCurrentAudio.attach())
+      console.log(mediaCurrentAudio)
     }
-    addLocalVideo()
-  }, [])
+  }, [mediaCurrentAudio])
 
   return (
     <>
@@ -46,6 +50,7 @@ export function MeetConfig() {
           className="max-w-lg h-72 lg:h-80 border rounded-md"
           ref={localVideo}
         />
+        <div className="hidden" ref={localAudio} />
         <section className="flex items-center gap-4">
           <ButtonMeet icon={<CamIcon />} />
           <ButtonMeet icon={<MicroIcon />} />
