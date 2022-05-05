@@ -5,7 +5,6 @@ import { HashRouter } from 'react-router-dom'
 import { App } from './App'
 import { AppProvider } from './provider/app'
 import { AuthProvider } from './provider/auth'
-import { VideoProvider } from './provider/video'
 
 const container = document.getElementById('app')
 const root = createRoot(container!)
@@ -15,9 +14,7 @@ root.render(
     <AppProvider>
       <HashRouter>
         <AuthProvider>
-          <VideoProvider>
-            <App />
-          </VideoProvider>
+          <App />
         </AuthProvider>
       </HashRouter>
     </AppProvider>

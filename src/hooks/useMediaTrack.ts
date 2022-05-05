@@ -9,7 +9,6 @@ import { setCurrentMediaP, useMediaTrackI } from '../types/video.types'
 
 async function getAllMediaTrack() {
   const media = await navigator.mediaDevices.enumerateDevices()
-  console.log(media.filter(x => x.kind === 'audiooutput'))
   return {
     video: media.filter(x => x.kind === 'videoinput'),
     audio: media.filter(x => x.kind === 'audioinput')

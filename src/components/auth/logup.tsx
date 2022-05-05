@@ -28,7 +28,7 @@ export function LogupCard({ onClose }: AuthCommonProps): JSX.Element {
 
   useEffect(() => {
     if (isLogged) {
-      navigate('/dashboard')
+      navigate('/')
     }
   }, [isLogged])
 

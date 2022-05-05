@@ -5,6 +5,10 @@ import { useAuthI } from '../../types/auth.types'
 
 export function useAuth(): useAuthI {
   const [user, setUser] = useState<User | null>(null)
+  const [userAuthDialogShow, setDialogShow] = useState(false)
+  const [userAuthDialogDisplay, setDialogDisplay] = useState<'login' | 'logup'>(
+    'login'
+  )
 
   useEffect(() => {
     const session = supabase.auth.session()
@@ -17,19 +21,21 @@ export function useAuth(): useAuthI {
       }
     )
 
+    if (session?.user) {
+      setDialogShow(false)
+    }
+
     return () => {
       authListener?.unsubscribe()
     }
   }, [user])
 
   // card Dialog
-  const [userAuthDialogShow, setDialogShow] = useState(false)
-  const [userAuthDialogDisplay, setDialogDisplay] = useState<'login' | 'logup'>(
-    'login'
-  )
   function toggleAuthDialog(show: boolean, display?: 'login' | 'logup'): void {
-    setDialogShow(show)
-    setDialogDisplay(display || userAuthDialogDisplay)
+    if (!user) {
+      setDialogShow(show)
+      setDialogDisplay(display || userAuthDialogDisplay)
+    }
   }
 
   return {

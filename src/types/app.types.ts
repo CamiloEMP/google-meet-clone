@@ -1,5 +1,6 @@
-export type AppContextI = StyleProps
+export type AppContextI = useStyleI
 
-export interface StyleProps {
-  styleTheme: 'light' | 'dark' | 'auto'
+export interface useStyleI {
+  styleTheme: string
+  setStyleTheme: (theme: 'light' | 'dark') => void
 }
