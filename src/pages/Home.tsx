@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, TextInput } from 'flowbite-react'
 import { NavBar } from '../components/Navbar'
 import { useAuthContext } from '../hooks/useAuthContext'
