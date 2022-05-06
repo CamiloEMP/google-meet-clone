@@ -38,17 +38,21 @@ export function useMediaTrack(): useMediaTrackI {
   // Selecciona los Dispositivos
   function setCurrentMedia({ deviceAudio, deviceVideo }: setCurrentMediaP) {
     if (typeof deviceVideo !== 'undefined') {
-      createLocalVideoTrack(deviceVideo).catch(e => console.error(e))
+      createLocalVideoTrack(deviceVideo)
+        .then(s => setMediaCurrentVideo(s))
+        .catch(e => console.error(e))
     }
     if (typeof deviceAudio !== 'undefined') {
-      createLocalAudioTrack(deviceAudio).catch(e => console.error(e))
+      createLocalAudioTrack(deviceAudio)
+        .then(s => setMediaCurrentAudio(s))
+        .catch(e => console.error(e))
     }
   }
 
   useEffect(() => {
     updateDevices().then(s => {
       if (!mediaCurrentVideo) {
-        setCurrentMedia({ deviceVideo: s.video[0], deviceAudio: s.audio[0] })
+        setCurrentMedia({ deviceVideo: s.video[1], deviceAudio: s.audio[0] })
       }
     })
   }, [])
