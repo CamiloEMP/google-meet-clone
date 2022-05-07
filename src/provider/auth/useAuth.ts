@@ -7,7 +7,7 @@ export function useAuth(): useAuthI {
   const [user, setUser] = useState<User | null>(null)
   const [userAuthDialogShow, setDialogShow] = useState(true)
   const [userAuthDialogDisplay, setDialogDisplay] = useState<'login' | 'logup'>(
-    'login'
+    'logup'
   )
 
   useEffect(() => {

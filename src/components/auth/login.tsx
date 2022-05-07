@@ -1,24 +1,14 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable no-empty-character-class */
 import { XIcon, MailIcon, LockClosedIcon } from '@heroicons/react/outline'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { Button } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
 import { LoginUser } from '../../supabase/auth/loginUser'
 import { useNavigate } from 'react-router-dom'
+import { validate } from './validator'
 
 interface LoginForm {
   email: string
   password: string
-}
-
-const validate = {
-  email: {
-    required: true,
-    pattern:
-      /([!#-'*+\/-9=?A-Z^-~-]+(.[!#-'*+\/-9=?A-Z^-~-]+)*|"([]!#-[^-~ \t]|(\[\t -~]))+")@([!#-'*+\/-9=?A-Z^-~-]+(.[!#-'*+\/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])/
-  },
-  password: { required: true, minLength: 4 }
 }
 
 export function LoginCard(): JSX.Element {
@@ -124,6 +114,7 @@ export function LoginCard(): JSX.Element {
           <p className="text-center text-sm text-gray-500">
             Si no tienes una cuenta.{' '}
             <button
+              type="button"
               className="text-blue-500 hover:underline"
               onClick={() => {
                 toggleAuthDialog(true, 'logup')
