@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import UserIcon from '../../assets/UserIcon'
 import { CreateUser } from '../../supabase/auth/createUser'
 import { ButtonModal } from '../Buttons/ButtonModal'
 import { Footer } from './footer'
 import { Inputs } from './Inputs'
 import { AuthCommonProps, User } from './types'
 import { TextInput } from 'flowbite-react'
+import { UserIcon } from '@heroicons/react/outline'
 
 export function LogupCard({ onClose }: AuthCommonProps): JSX.Element {
   const navigate = useNavigate()
@@ -52,7 +52,7 @@ export function LogupCard({ onClose }: AuthCommonProps): JSX.Element {
               id="name"
               name="name"
               placeholder="Tú nombre"
-              addon={<UserIcon />}
+              addon={<UserIcon className="w-5 h-5" />}
             />
           </div>
           <Inputs values={values} setValues={setValues} />

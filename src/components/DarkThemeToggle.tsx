@@ -1,7 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { MoonIcon, SunIcon } from '@heroicons/react/outline'
 import { FC, useEffect, useState } from 'react'
-import MoonIcon from '../assets/MoonIcon'
-import SunIcon from '../assets/SunIcon'
 
 export type Theme = 'dark' | 'light'
 

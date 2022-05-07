@@ -1,7 +1,6 @@
 import React from 'react'
 import { TextInput } from 'flowbite-react'
-import EmailIcon from '../../assets/EmailIcon'
-import PasswordIcon from '../../assets/PasswordIcon'
+import { MailIcon, LockOpenIcon } from '@heroicons/react/outline'
 
 interface Props {
   values: {
@@ -29,7 +28,7 @@ export const Inputs = ({ values, setValues }: Props) => {
           id="email"
           name="email"
           placeholder="ejemplo@gmail.com"
-          addon={<EmailIcon />}
+          addon={<MailIcon className="w-5 h-5" />}
         />
       </div>
       <div className="mb-6">
@@ -40,7 +39,7 @@ export const Inputs = ({ values, setValues }: Props) => {
           id="password"
           name="password"
           placeholder="********"
-          addon={<PasswordIcon />}
+          addon={<LockOpenIcon className="w-5 h-5" />}
         />
       </div>
     </>
