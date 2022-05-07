@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-empty-character-class */
 import { XIcon, MailIcon, LockClosedIcon } from '@heroicons/react/outline'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { Button } from 'flowbite-react'
@@ -10,17 +12,33 @@ interface LoginForm {
   password: string
 }
 
+const validate = {
+  email: {
+    required: true,
+    pattern:
+      /([!#-'*+\/-9=?A-Z^-~-]+(.[!#-'*+\/-9=?A-Z^-~-]+)*|"([]!#-[^-~ \t]|(\[\t -~]))+")@([!#-'*+\/-9=?A-Z^-~-]+(.[!#-'*+\/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])/
+  },
+  password: { required: true, minLength: 4 }
+}
+
 export function LoginCard(): JSX.Element {
   const { toggleAuthDialog } = useAuthContext()
   const navigate = useNavigate()
-  const { register, handleSubmit } = useForm<LoginForm>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<LoginForm>()
+
   const onSubmit = ({ email, password }: LoginForm) => {
-    LoginUser({ email, password })
-      .then(() => {
-        toggleAuthDialog(false)
-        navigate('/')
-      })
-      .catch(() => alert('Correo Electronico invalidos'))
+    if (Object.keys(errors).length === 0) {
+      LoginUser({ email, password })
+        .then(() => {
+          toggleAuthDialog(false)
+          navigate('/')
+        })
+        .catch(() => alert('Correo Electronico invalidos'))
+    }
   }
 
   return (
@@ -55,9 +73,19 @@ export function LoginCard(): JSX.Element {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="mi@email.com"
                 required
-                {...register('email', { required: true })}
+                {...register('email', validate.email)}
               />
             </div>
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                {errors.email.type === 'required'
+                  ? 'El campo es Requerido'
+                  : null}
+                {errors.email.type === 'pattern'
+                  ? `El Correo Electronico no es valido`
+                  : null}
+              </p>
+            )}
           </div>
           <div>
             <label
@@ -76,9 +104,19 @@ export function LoginCard(): JSX.Element {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="contraseña"
                 required
-                {...register('password', { required: true })}
+                {...register('password', validate.password)}
               />
             </div>
+            {errors.password && (
+              <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                {errors.password.type === 'required'
+                  ? 'El campo es Requerido'
+                  : null}
+                {errors.password.type === 'minLength'
+                  ? `Minimo ${validate.password.minLength} caracteres`
+                  : null}
+              </p>
+            )}
           </div>
           <Button type="submit" className="!w-full block">
             Iniciar Sesion

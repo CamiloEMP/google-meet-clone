@@ -4,8 +4,7 @@ import { LoginCard } from './login'
 import { LogupCard } from './logup'
 
 export function AuthSign(): JSX.Element {
-  const { userAuthDialogDisplay, toggleAuthDialog, userAuthDialogShow } =
-    useAuthContext()
+  const { userAuthDialogDisplay, userAuthDialogShow } = useAuthContext()
 
   return (
     <>
@@ -14,11 +13,7 @@ export function AuthSign(): JSX.Element {
           role="dialog"
           className="absolute inset-0 z-10 h-full w-full bg-black/25 flex justify-center items-center overflow-y-auto overflow-x-hidden"
         >
-          {userAuthDialogDisplay === 'login' ? (
-            <LoginCard />
-          ) : (
-            <LogupCard onClose={() => toggleAuthDialog(false)} />
-          )}
+          {userAuthDialogDisplay === 'login' ? <LoginCard /> : <LogupCard />}
         </section>
       ) : null}
     </>
