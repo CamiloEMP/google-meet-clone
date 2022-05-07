@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import MeetIcon from '../assets/MeetIcon'
 import {
@@ -85,12 +84,7 @@ export const NavBar = () => {
           </span>
         </Link>
         <div className="flex items-center gap-2">
-          <Button
-            icon={QuestionMarkCircleIcon}
-            color="light"
-            className="!px-0"
-            pill
-          />
+          <Button icon={QuestionMarkCircleIcon} color="light" pill />
           {isAuth ? <MenuRightAuth /> : <MenuRightNoAuth />}
         </div>
       </div>
