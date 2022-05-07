@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, PropsWithChildren } from 'react'
 import { LocalAudioTrack, LocalVideoTrack } from 'twilio-video'
 import { ParticipantAudio } from './assets/audio'
 
@@ -7,7 +7,11 @@ interface VideoParticipantProps {
   audio: LocalAudioTrack | undefined
 }
 
-export function VideoParticipant({ audio, video }: VideoParticipantProps) {
+export function VideoParticipant({
+  audio,
+  video,
+  children
+}: PropsWithChildren<VideoParticipantProps>) {
   const localVideo = useRef<HTMLDivElement>(null)
   if (!audio) return null
   if (!video) return null
@@ -25,6 +29,7 @@ export function VideoParticipant({ audio, video }: VideoParticipantProps) {
         <div ref={localVideo} className="absolute inset-0 z-0 video-rounded" />
         <div className="absolute z-10 inset-0 flex flex-col justify-between items-center p-3">
           <ParticipantAudio audio={audio} />
+          {children}
         </div>
       </div>
     </div>
