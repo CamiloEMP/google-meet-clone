@@ -15,7 +15,7 @@ export function AuthSign(): JSX.Element {
           className="absolute inset-0 z-10 h-full w-full bg-black/25 flex justify-center items-center overflow-y-auto overflow-x-hidden"
         >
           {userAuthDialogDisplay === 'login' ? (
-            <LoginCard onClose={() => toggleAuthDialog(false)} />
+            <LoginCard />
           ) : (
             <LogupCard onClose={() => toggleAuthDialog(false)} />
           )}
