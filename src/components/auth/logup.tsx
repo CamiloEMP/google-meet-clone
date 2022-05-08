@@ -42,7 +42,9 @@ export function LogupCard(): JSX.Element {
     <div className="relative p-4 w-full max-w-lg h-auto shadow-sm overflow-auto">
       <div className="relative bg-white rounded-lg shadow dark:bg-gray-800 p-6">
         <div role="title-card" className="flex justify-between items-center">
-          <h3 className="text-2xl font-bold text-gray-900">Registrate</h3>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Registrate
+          </h3>
           <Button
             color="light"
             pill

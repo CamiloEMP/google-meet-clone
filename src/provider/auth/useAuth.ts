@@ -5,9 +5,9 @@ import { useAuthI } from '../../types/auth.types'
 
 export function useAuth(): useAuthI {
   const [user, setUser] = useState<User | null>(null)
-  const [userAuthDialogShow, setDialogShow] = useState(true)
+  const [userAuthDialogShow, setDialogShow] = useState(false)
   const [userAuthDialogDisplay, setDialogDisplay] = useState<'login' | 'logup'>(
-    'logup'
+    'login'
   )
 
   useEffect(() => {
