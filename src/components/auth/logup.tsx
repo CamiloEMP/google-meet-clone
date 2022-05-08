@@ -7,7 +7,6 @@ import {
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { Button } from 'flowbite-react'
 import { useForm } from 'react-hook-form'
-import { LoginUser } from '../../supabase/auth/loginUser'
 import { useNavigate } from 'react-router-dom'
 import { validate } from './validator'
 import { CreateUser } from '../../supabase/auth/createUser'
