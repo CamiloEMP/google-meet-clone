@@ -1,5 +1,5 @@
 import { Navbar } from 'flowbite-react'
-import { IsSupported } from '../../components/IsSupported'
+import { IsSupported } from '../../components/room/IsSupported'
 import { VideoParticipant } from '../../components/room/participant'
 import { useVideoContext } from '../../hooks/useVideoContext'
 
